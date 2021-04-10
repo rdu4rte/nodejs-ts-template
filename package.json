@@ -5,6 +5,7 @@
   "main": "src/app.ts",
   "scripts": {
     "dev": "NODE_ENV=development nodemon",
+    "build:start": "NODE_ENV=production npm run build && npm run start",
     "build": "rimraf ./dist && tsc",
     "start": "NODE_ENV=production node ./dist/src/app.js",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
@@ -16,10 +17,10 @@
     "seed:run": "NODE_ENV=development npm run typeorm-seed seed",
     "schema:drop": "NODE_ENV=development npm run typeorm schema:drop",
     "schema:sync": "NODE_ENV=development npm run typeorm schema:sync",
-    "migration:run:prod": "NODE_ENV=production npm run typeorm -- migration:run",
-    "seed:config:prod": "NODE_ENV=production npm run typeorm-seed config",
-    "seed:run:prod": "NODE_ENV=production npm run typeorm-seed seed",
-    "schema:drop:prod": "NODE_ENV=production npm run typeorm schema:drop"
+    "migration:run-prod": "NODE_ENV=production npm run typeorm -- migration:run",
+    "seed:config-prod": "NODE_ENV=production npm run typeorm-seed config",
+    "seed:run-prod": "NODE_ENV=production npm run typeorm-seed seed",
+    "schema:drop-prod": "NODE_ENV=production npm run typeorm schema:drop"
   },
   "author": "Raul Duarte",
   "license": "ISC",
