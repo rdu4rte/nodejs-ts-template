@@ -9,8 +9,6 @@ import { ServerLoader } from "./config/loaders/server.loader";
 import { SwaggerLoader } from "./config/loaders/swagger.loader";
 
 const serverStart = async () => {
-  const logger = Logger;
-
   try {
     const container = ContainerConfig.Load();
     const server = new InversifyExpressServer(container);
@@ -28,10 +26,10 @@ const serverStart = async () => {
 
     const serverInstance = server.build();
     serverInstance.listen(port, () => {
-      logger.info(`[Bootstrap] Server running on: http://127.0.0.1:${port}/api/v1/ 🚀`);
+      Logger.info(`[Bootstrap] Server running on: http://127.0.0.1:${port}/api/v1/ 🚀`);
     });
   } catch (err) {
-    logger.error(`Error starting server: ${err.message}`);
+    Logger.error(`Error starting server: ${err.message}`);
     process.exit(1);
   }
 };

@@ -28,6 +28,8 @@ export const config: ConnectionOptions = <ConnectionOptions>{
   database: pgDb,
   synchronize: false,
   entities: ["dist/src/modules/**/entity/*.entity.js"],
+  seeds: ["dist/src/config/database/seed/*.seed.js"],
+  factories: ["dist/src/config/database/factory/*.factory.js"],
   migrations: ["dist/src/migration/*.js"],
   cli: {
     migrationsDir: "src/migration",

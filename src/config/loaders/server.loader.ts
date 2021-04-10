@@ -7,8 +7,6 @@ import Logger from "../../common/logger/winston.logger";
 
 export class ServerLoader {
   public static Load(app: Application) {
-    const logger = Logger;
-
     app.use(cors());
 
     app.use(json());
@@ -30,7 +28,7 @@ export class ServerLoader {
       }),
     );
 
-    logger.info("[ServerLoader] Base server loaded 📁");
+    Logger.info("[Server] Server loaded 📁");
     return app;
   }
 }
