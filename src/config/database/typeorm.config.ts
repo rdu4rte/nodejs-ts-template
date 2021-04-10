@@ -1,0 +1,35 @@
+import { injectable } from "inversify";
+import { ConnectionOptions, createConnection, createConnections, DatabaseType } from "typeorm";
+import { pgHost, pgUser, pgPass, pgDb, nodeEnv } from "../";
+import Logger from "../../common/logger/winston.logger";
+
+@injectable()
+export class TypeOrmConfig {
+  private logger = Logger;
+
+  public async connection(): Promise<any> {
+    try {
+      await createConnection(config);
+      this.logger.info("[TypeORM] Database connected 💾");
+    } catch (err) {
+      this.logger.error(`[TypeORM] Failed to connect: ${err.message} ❌`);
+      process.exit(1);
+    }
+
+    return config;
+  }
+}
+
+export const config: ConnectionOptions = <ConnectionOptions>{
+  type: <DatabaseType>"postgres",
+  host: pgHost,
+  username: pgUser,
+  password: pgPass,
+  database: pgDb,
+  synchronize: false,
+  entities: ["dist/src/modules/**/entity/*.entity.js"],
+  migrations: ["dist/src/migration/*.js"],
+  cli: {
+    migrationsDir: "src/migration",
+  },
+};
