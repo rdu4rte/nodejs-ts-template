@@ -7,7 +7,7 @@ switch (nodeEnv) {
     dotenv.config({ path: ".env.local" });
     break;
   case "production":
-    dotenv.config({ path: ".env" });
+    dotenv.config({ path: ".env.prod" });
     break;
   default:
     dotenv.config({ path: ".env.local" });
@@ -16,12 +16,18 @@ switch (nodeEnv) {
 // custom ports
 export const port: number = +process.env.PORT || +process.env.CUSTOM_PORT;
 
-// db
+// db local
 export const pgHost: string = process.env.POSTGRES_HOST;
 export const pgPort: number = +process.env.POSTGRES_PORT;
 export const pgUser: string = process.env.POSTGRES_USERNAME;
 export const pgPass: string = process.env.POSTGRES_PASSWORD;
 export const pgDb: string = process.env.POSTGRES_DATABASE;
+
+// db prod
+export const pgProdUrl: string = process.env.POSTGRES_URL;
+export const pgProdUser: string = process.env.POSTGRES_USERNAME;
+export const pgProdPass: string = process.env.POSTGRES_PASSWORD;
+export const pgProdDb: string = process.env.POSTGRES_DATABASE;
 
 // jwt
 export const jwtSecret: string = process.env.JWT_SECRET;
