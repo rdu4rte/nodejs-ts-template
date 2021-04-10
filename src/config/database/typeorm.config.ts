@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
-import { ConnectionOptions, createConnection, createConnections, DatabaseType } from "typeorm";
-import { pgHost, pgUser, pgPass, pgDb, nodeEnv } from "../";
+import { ConnectionOptions, createConnection, DatabaseType } from "typeorm";
+import { pgHost, pgUser, pgPass, pgDb } from "../";
 import Logger from "../../common/logger/winston.logger";
 
 @injectable()
@@ -27,7 +27,7 @@ export const config: ConnectionOptions = <ConnectionOptions>{
   password: pgPass,
   database: pgDb,
   synchronize: false,
-  entities: ["dist/src/modules/**/entity/*.entity.js"],
+  entities: ["src/modules/**/entity/*.entity.ts", "dist/src/modules/**/entity/*.entity.js"],
   seeds: ["dist/src/config/database/seed/*.seed.js"],
   factories: ["dist/src/config/database/factory/*.factory.js"],
   migrations: ["dist/src/migration/*.js"],

@@ -1,18 +1,20 @@
 import { User } from "./../../../modules/user/entity/user.entity";
 import { define } from "typeorm-seeding";
-import * as fs from "fs";
+import Faker from "faker";
 
-export const userData = JSON.parse(fs.readFileSync("dataseed/user-seed.json", "utf-8"));
+define(User, (faker: typeof Faker) => {
+  const firstName = faker.name.firstName();
+  const lastName = faker.name.lastName();
+  const username = `${firstName}_${lastName}${Math.floor(Math.random() * 100)}`.toLowerCase();
+  const email = faker.internet.email();
+  const password = "123123";
 
-define(User, () => {
-  const users = userData.map((user: User) => {
-    const newUser = new User();
+  const newUser = new User();
+  newUser.username = username;
+  newUser.firstName = firstName;
+  newUser.lastName = lastName;
+  newUser.email = email.toLowerCase();
+  newUser.password = password;
 
-    newUser.username = user.username;
-    newUser.firstName = user.firstName;
-    newUser.lastName = user.lastName;
-    newUser.email = user.email;
-    newUser.password = user.password;
-  });
-  return users;
+  return newUser;
 });

@@ -4,14 +4,14 @@ import { User } from "./entity/user.entity";
 
 @injectable()
 export class UserRepository {
-  private connection;
+  private repository;
 
   constructor() {
-    this.connection = getConnection();
+    this.repository = getConnection().getRepository<User>(User);
   }
 
   // fetch users
   public async fetchUsers(): Promise<User[]> {
-    return await this.connection.createQueryBuilder(User, "user").getMany();
+    return await this.repository.createQueryBuilder().getMany();
   }
 }

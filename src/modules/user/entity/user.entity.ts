@@ -31,6 +31,9 @@ export class User {
   })
   role: Role;
 
+  @Column({ nullable: false, default: true })
+  active: boolean;
+
   @CreateDateColumn({ type: "timestamp" })
   createdAt: Date;
 
