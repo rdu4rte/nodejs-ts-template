@@ -1,4 +1,4 @@
-import { Application, json, urlencoded } from "express";
+import { Application, json, urlencoded, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
@@ -29,6 +29,14 @@ export class ServerLoader {
     );
 
     Logger.info("[Server] Server loaded 📁");
+
+    app.get("/api/v1", (req: Request, res: Response, next: NextFunction) => {
+      res.status(200).json({
+        message: "NodeJS & TypeScript API Template",
+        docs: "http://127.0.0.1:3003/api-docs/swagger",
+      });
+    });
+
     return app;
   }
 }

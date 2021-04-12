@@ -17,10 +17,10 @@
     "seed:run": "NODE_ENV=development npm run typeorm-seed seed",
     "schema:drop": "NODE_ENV=development npm run typeorm schema:drop",
     "schema:sync": "NODE_ENV=development npm run typeorm schema:sync",
-    "migration:run-prod": "NODE_ENV=production npm run typeorm -- migration:run",
-    "seed:config-prod": "NODE_ENV=production npm run typeorm-seed config",
-    "seed:run-prod": "NODE_ENV=production npm run typeorm-seed seed",
-    "schema:drop-prod": "NODE_ENV=production npm run typeorm schema:drop"
+    "migration:run:prod": "NODE_ENV=production npm run typeorm -- migration:run",
+    "seed:config:prod": "NODE_ENV=production npm run typeorm-seed config",
+    "seed:run:prod": "NODE_ENV=production npm run typeorm-seed seed",
+    "schema:drop:prod": "NODE_ENV=production npm run typeorm schema:drop"
   },
   "author": "Raul Duarte",
   "license": "ISC",
