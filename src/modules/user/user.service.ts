@@ -11,4 +11,9 @@ export class UserService {
   public async fetchUsers(): Promise<User[]> {
     return this.userRepository.fetchUsers();
   }
+
+  // get by id
+  public async getById(id: number): Promise<User> {
+    return this.userRepository.getById(id);
+  }
 }

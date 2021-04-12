@@ -14,4 +14,13 @@ export class UserRepository {
   public async fetchUsers(): Promise<User[]> {
     return await this.repository.createQueryBuilder().getMany();
   }
+
+  // get by id
+  public async getById(id: number): Promise<User> {
+    return await this.repository
+      .createQueryBuilder("user")
+      .where("user.id = :id", { id: id })
+      .andWhere("user.active = :active", { active: true })
+      .getOne();
+  }
 }
